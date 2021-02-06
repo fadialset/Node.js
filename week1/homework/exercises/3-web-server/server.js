@@ -10,7 +10,7 @@ const fs = require('fs');
 let server = http.createServer(function (req, res) {
 	if(req.url === '/'){
 		fs.readFile('index.html',(err,content)=>{
-			if(err) throw err;
+			if(err) res.sendStatus(500);
 			res.writeHead(200,{'content-Type': 'text/html'});
 			res.end(content)
 		})
