@@ -34,7 +34,7 @@ app.put('/blogs/:title', (req,res) => {
     res.end("Blog is  Updated")
   }
   else{
-   return  res.status(400).json({ msg: 'File is not exist'})
+   return  res.status(404).json({ msg: 'File is not exist'})
   }
 })
 app.delete('/blogs/:title', (req, res) => {
@@ -43,7 +43,7 @@ app.delete('/blogs/:title', (req, res) => {
       fs.unlinkSync(path.join(__dirname, '/blogs', `${title}.json`));
       res.end('ok');
     } else {
-      return  res.status(400).json({ msg: 'File is not exist'})
+      return  res.status(404).json({ msg: 'File is not exist'})
     }
 })
 app.get('/blogs/:title', (req, res) => {
@@ -55,7 +55,7 @@ app.get('/blogs/:title', (req, res) => {
     res.status(200)
     res.end(post)
     }else{
-      return  res.status(400).json({ msg: 'File is not exist'})
+      return  res.status(404).json({ msg: 'File is not exist'})
     }
   
 })
